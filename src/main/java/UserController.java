@@ -5,8 +5,9 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.Optional;
 import java.util.List;
+
 
 @RestController
 public class UserController {
@@ -23,13 +24,23 @@ public class UserController {
     }
 
 
+
     @GetMapping("/GetUser")
     public List<User> getUser() {
         return repo.findAll();
         }
 
 
+    @GetMapping("/userbyid")
+    public Optional<User> getUser(@PathVariable Long id) {
+       return repo.findById(id);
+
     }
+
+}
+
+
+
 
 
 
